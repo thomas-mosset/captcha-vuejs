@@ -16,3 +16,6 @@ Bientôt
 ## **Fonctionnalités**
 
 - Génération aléatoire d'un captcha ;
+- Soumission d'un captcha par l'utilisateur·ice ;
+- Comparaison des 2 captchas ;
+- Message d'erreur en cas de soumission erronées ;
