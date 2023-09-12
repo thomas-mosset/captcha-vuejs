@@ -1,24 +1,18 @@
-# captcha-vue
+# Captcha-vue
 
-## Project setup
-```
-yarn install
-```
+## **Résumé**
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Création d'un captcha en Vuejs.
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## **Démo**
 
-### Lints and fixes files
-```
-yarn lint
-```
+Bientôt
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## **Utilisation de**
+
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+## **Fonctionnalités**
+
+- Génération aléatoire d'un captcha ;
