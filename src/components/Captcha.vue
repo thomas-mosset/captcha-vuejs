@@ -18,6 +18,17 @@
     </div>
 
     <button class="btn" @click="createCaptcha">Generate new captcha</button>
+
+    <div class="user-response">
+      <form @submit.prevent="submitCaptcha()">
+        <label for="captcha" class="user-captcha-label">Enter captcha :</label>
+        <input type="text" name="captcha" id="captcha" class="user-captcha-input" v-model="userCaptchaSubmission">
+
+        <button type="submit" class="btn">Submit</button>
+      </form>
+
+      <p v-if="message !== ''">{{ message }}</p>
+    </div>
   </div>
 </template>
 
@@ -28,14 +39,17 @@ export default {
     return {
       captchaLength: 8,
       captcha: [],
+      userCaptchaSubmission: "",
+      message: "",
     }
   },
-  mounted() {
+  created() {
     this.createCaptcha();
   },
   methods: {
     createCaptcha() {
       let temporaryCaptcha = "";
+      this.message = "";
 
       for (let i = 0; i < this.captchaLength; i++) {
         temporaryCaptcha += this.getRandomCharacter();
@@ -65,6 +79,24 @@ export default {
 
       return rotationVariations[Math.floor(Math.random() * 8)];
     },
+
+    submitCaptcha() {
+      this.message = "";
+
+      const temporaryCaptchaToCompare = this.captcha.join(""); // transform array back to string
+
+      if (this.userCaptchaSubmission.length === 0) {
+        this.message = "You submitted an empty captcha. Please try again.";
+      } else if (this.userCaptchaSubmission.length < this.captchaLength || this.userCaptchaSubmission.length > this.captchaLength) {
+        this.message = "Entered captcha must be " + this.captchaLength + " long.";
+      } else if (this.userCaptchaSubmission !== temporaryCaptchaToCompare) {
+        this.message = "Please enter a valid captcha.";
+      } else {
+        this.message = "Captcha is valid !";
+      }
+
+      this.userCaptchaSubmission = "";
+    }
   }
 }
 </script>
@@ -99,4 +131,13 @@ export default {
   background: #fddacc;
   cursor: pointer;
 }
+
+.user-response {
+  margin: 5rem auto;
+}
+
+.user-captcha-label,.user-captcha-input {
+  margin-right: 0.5rem;
+}
+
 </style>
